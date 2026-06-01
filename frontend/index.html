@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+  <title>AI Student Companion</title>
+
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+
+
+
+
+  <button id="logoutBtn">
+    Logout
+  </button>
+
+
+
+
+
+  <h1>AI Student Companion</h1>
+
+
+
+
+
+  <p id="serverMessage">
+    Connecting to server...
+  </p>
+
+
+
+
+
+  <!-- ========================= -->
+  <!-- THEME -->
+  <!-- ========================= -->
+
+  <button id="themeBtn">
+    Toggle Theme
+  </button>
+
+
+
+
+
+  <!-- ========================= -->
+  <!-- TASK SECTION -->
+  <!-- ========================= -->
+
+  <div class="task-section">
+
+    <h2>Tasks</h2>
+
+
+
+
+
+    <input
+      type="text"
+      id="taskInput"
+      placeholder="Enter task"
+    />
+
+
+
+
+
+    <button id="addTaskBtn">
+      Add Task
+    </button>
+
+
+
+
+
+    <div id="taskContainer"></div>
+
+  </div>
+
+
+
+
+
+  <!-- ========================= -->
+  <!-- NOTES -->
+  <!-- ========================= -->
+
+  <div class="notes-section">
+
+    <h2>Notes</h2>
+
+
+
+
+
+    <textarea
+      id="notesInput"
+      placeholder="Write notes..."
+    ></textarea>
+
+  </div>
+
+
+
+
+
+  <!-- ========================= -->
+  <!-- TIMER -->
+  <!-- ========================= -->
+
+  <div class="timer-section">
+
+    <h2>Pomodoro Timer</h2>
+
+
+
+
+
+    <h1 id="timerDisplay">
+      25:00
+    </h1>
+
+
+
+
+
+    <button id="startBtn">
+      Start
+    </button>
+
+
+
+
+
+    <button id="pauseBtn">
+      Pause
+    </button>
+
+
+
+
+
+    <button id="resetBtn">
+      Reset
+    </button>
+
+  </div>
+
+
+
+
+
+  <!-- ========================= -->
+  <!-- STATS -->
+  <!-- ========================= -->
+
+  <div class="stats-section">
+
+    <h2>Productivity Stats</h2>
+
+
+
+
+
+    <p>
+      Total Tasks:
+      <span id="totalTasks">0</span>
+    </p>
+
+
+
+
+
+    <p>
+      Completed Tasks:
+      <span id="completedTasks">0</span>
+    </p>
+
+
+
+
+
+    <p>
+      Pending Tasks:
+      <span id="pendingTasks">0</span>
+    </p>
+
+
+
+
+
+    <p>
+      Completion Rate:
+      <span id="completionRate">0%</span>
+    </p>
+
+  </div>
+
+
+
+
+
+  <!-- ========================= -->
+  <!-- AI ASSISTANT -->
+  <!-- ========================= -->
+
+  <div class="ai-box">
+
+    <h2>AI Study Assistant</h2>
+
+
+
+
+
+    <button id="adviceBtn">
+      Get Study Advice
+    </button>
+
+
+
+
+
+    <p id="adviceText"></p>
+
+  </div>
+
+
+
+
+
+  <script src="script.js"></script>
+
+</body>
+
+</html>

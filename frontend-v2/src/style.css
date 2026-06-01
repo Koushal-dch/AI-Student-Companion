@@ -1,0 +1,659 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+:root {
+  --bg: #030014;
+  --panel: rgba(255, 255, 255, 0.08);
+  --border: rgba(255, 255, 255, 0.14);
+  --text: #f8fafc;
+  --muted: #a1a1aa;
+  --pink: #ec4899;
+  --violet: #8b5cf6;
+  --cyan: #22d3ee;
+  --lime: #a3e635;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 20% 10%, rgba(236,72,153,0.28), transparent 25%),
+    radial-gradient(circle at 80% 0%, rgba(34,211,238,0.22), transparent 25%),
+    radial-gradient(circle at 50% 100%, rgba(139,92,246,0.24), transparent 35%),
+    var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+  background-size: 38px 38px;
+  pointer-events: none;
+  opacity: 0.45;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+}
+
+.sidebar {
+  width: 280px;
+  padding: 28px 20px;
+  background: rgba(5, 5, 20, 0.72);
+  border-right: 1px solid var(--border);
+  backdrop-filter: blur(28px);
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+.sidebar h1 {
+  font-size: 30px;
+  margin-bottom: 24px;
+  letter-spacing: -1.2px;
+}
+
+.sidebar h1 span {
+  background: linear-gradient(135deg, var(--pink), var(--violet), var(--cyan));
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.sidebar button,
+button {
+  border: 1px solid rgba(255,255,255,0.12);
+  padding: 13px 16px;
+  border-radius: 18px;
+  color: white;
+  background: rgba(255,255,255,0.07);
+  cursor: pointer;
+  font-weight: 800;
+  transition: 0.22s ease;
+}
+
+.sidebar button {
+  text-align: left;
+  width: 100%;
+}
+
+.sidebar button:hover,
+button:hover {
+  transform: translateY(-3px) scale(1.01);
+  background: linear-gradient(135deg, var(--pink), var(--violet), var(--cyan));
+  box-shadow: 0 18px 45px rgba(139,92,246,0.35);
+}
+
+#logoutBtn {
+  margin-top: auto;
+  background: rgba(236,72,153,0.14);
+}
+
+.main {
+  flex: 1;
+  padding: 44px;
+}
+
+.main h2 {
+  font-size: 46px;
+  letter-spacing: -2px;
+  margin-bottom: 8px;
+}
+
+.muted {
+  color: var(--muted);
+  margin-bottom: 28px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 20px;
+  margin-top: 28px;
+}
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(26px);
+  border-radius: 32px;
+  padding: 26px;
+  margin-bottom: 24px;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.38);
+  transition: 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(236,72,153,0.09), transparent, rgba(34,211,238,0.07));
+  pointer-events: none;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(236,72,153,0.45);
+  box-shadow: 0 25px 80px rgba(236,72,153,0.16);
+}
+
+.card h3 {
+  color: var(--muted);
+  margin-bottom: 12px;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 1.1px;
+}
+
+.card p {
+  font-size: 36px;
+  font-weight: 950;
+  letter-spacing: -1.2px;
+}
+
+.input-row {
+  display: flex;
+  gap: 13px;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 16px 17px;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 18px;
+  background: rgba(255,255,255,0.08);
+  color: white;
+  outline: none;
+  font-size: 15px;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #b4b4c0;
+}
+
+input:focus,
+textarea:focus {
+  border-color: rgba(236,72,153,0.8);
+  box-shadow: 0 0 0 4px rgba(236,72,153,0.14);
+}
+
+textarea {
+  min-height: 145px;
+  margin-bottom: 15px;
+  resize: vertical;
+}
+
+.input-row button,
+#saveNoteBtn,
+#startTimerBtn,
+#resetTimerBtn {
+  background: linear-gradient(135deg, var(--pink), var(--violet), var(--cyan));
+}
+
+.task {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  padding: 17px;
+  border-radius: 20px;
+  margin-bottom: 13px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.task div {
+  display: flex;
+  gap: 10px;
+}
+
+.done {
+  text-decoration: line-through;
+  opacity: 0.45;
+}
+
+.center {
+  text-align: center;
+}
+
+#timerDisplay {
+  font-size: 92px;
+  font-weight: 1000;
+  letter-spacing: -4px;
+  background: linear-gradient(135deg, #fff, var(--pink), var(--cyan));
+  -webkit-background-clip: text;
+  color: transparent;
+  margin-bottom: 26px;
+}
+
+#chatBox {
+  min-height: 300px;
+  max-height: 440px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  margin-bottom: 18px;
+  padding-right: 6px;
+}
+
+.user-msg,
+.ai-msg {
+  padding: 15px 18px;
+  border-radius: 22px;
+  max-width: 78%;
+  line-height: 1.55;
+}
+
+.user-msg {
+  align-self: flex-end;
+  background: linear-gradient(135deg, var(--pink), var(--violet));
+  border-bottom-right-radius: 6px;
+}
+
+.ai-msg {
+  align-self: flex-start;
+  background: rgba(255,255,255,0.11);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-bottom-left-radius: 6px;
+}
+
+.note p {
+  font-size: 16px;
+  line-height: 1.7;
+  margin-bottom: 14px;
+}
+
+.app.light {
+  background:
+    radial-gradient(circle at top left, rgba(236,72,153,0.14), transparent 28%),
+    #f8fafc;
+  color: #111827;
+}
+
+.app.light .sidebar,
+.app.light .card {
+  background: rgba(255,255,255,0.82);
+  color: #111827;
+}
+
+.app.light input,
+.app.light textarea,
+.app.light .task,
+.app.light .ai-msg {
+  background: rgba(15,23,42,0.06);
+  color: #111827;
+}
+
+.app.light .muted,
+.app.light .card h3 {
+  color: #64748b;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--pink), var(--violet), var(--cyan));
+  border-radius: 999px;
+}
+
+@media (max-width: 850px) {
+  .app {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+
+  .main {
+    padding: 22px;
+  }
+
+  .main h2 {
+    font-size: 34px;
+  }
+
+  .input-row {
+    flex-direction: column;
+  }
+
+  #timerDisplay {
+    font-size: 68px;
+  }
+}
+/* ========= PREMIUM ANIMATIONS ========= */
+
+.card {
+  animation: fadeUp 0.45s ease;
+}
+
+.task {
+  animation: fadeUp 0.35s ease;
+}
+
+.sidebar button {
+  position: relative;
+  overflow: hidden;
+}
+
+.sidebar button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,0.18),
+      transparent
+    );
+  opacity: 0;
+  transition: 0.25s;
+}
+
+.sidebar button:hover::before {
+  opacity: 1;
+}
+
+.sidebar button:active {
+  transform: scale(0.97);
+}
+
+button {
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+
+button:active {
+  transform: scale(0.96);
+}
+
+.card:hover {
+  transform:
+    translateY(-6px)
+    scale(1.01);
+}
+
+.task:hover {
+  transform: translateX(4px);
+  border-color:
+    rgba(236,72,153,0.4);
+}
+
+input,
+textarea {
+  transition:
+    0.25s ease;
+}
+
+input:focus,
+textarea:focus {
+  transform: scale(1.01);
+}
+
+.user-msg,
+.ai-msg {
+  animation:
+    chatPop 0.25s ease;
+}
+
+#timerDisplay {
+  animation:
+    glowPulse 3s infinite;
+}
+
+.sidebar h1 {
+  animation:
+    fadeDown 0.6s ease;
+}
+
+.stats .card:nth-child(1) {
+  animation-delay: 0.05s;
+}
+
+.stats .card:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.stats .card:nth-child(3) {
+  animation-delay: 0.15s;
+}
+
+.stats .card:nth-child(4) {
+  animation-delay: 0.2s;
+}
+
+.stats .card:nth-child(5) {
+  animation-delay: 0.25s;
+}
+
+.stats .card:nth-child(6) {
+  animation-delay: 0.3s;
+}
+
+.card {
+  animation-fill-mode: both;
+}
+
+/* ===== SCROLLBAR ===== */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background:
+    linear-gradient(
+      var(--pink),
+      var(--violet),
+      var(--cyan)
+    );
+
+  border-radius: 999px;
+}
+
+/* ===== ANIMATIONS ===== */
+
+@keyframes fadeUp {
+
+  from {
+    opacity: 0;
+    transform:
+      translateY(22px);
+  }
+
+  to {
+    opacity: 1;
+    transform:
+      translateY(0);
+  }
+
+}
+
+@keyframes fadeDown {
+
+  from {
+    opacity: 0;
+    transform:
+      translateY(-18px);
+  }
+
+  to {
+    opacity: 1;
+    transform:
+      translateY(0);
+  }
+
+}
+
+@keyframes chatPop {
+
+  from {
+    opacity: 0;
+    transform:
+      scale(0.92);
+  }
+
+  to {
+    opacity: 1;
+    transform:
+      scale(1);
+  }
+
+}
+
+@keyframes glowPulse {
+
+  0% {
+    filter:
+      drop-shadow(
+        0 0 0px
+        rgba(236,72,153,0.2)
+      );
+  }
+
+  50% {
+    filter:
+      drop-shadow(
+        0 0 18px
+        rgba(236,72,153,0.45)
+      );
+  }
+
+  100% {
+    filter:
+      drop-shadow(
+        0 0 0px
+        rgba(236,72,153,0.2)
+      );
+  }
+
+}
+/* ===== FINAL PRODUCT POLISH ===== */
+
+.main {
+  animation: pageEnter 0.45s ease;
+}
+
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.sidebar button {
+  letter-spacing: 0.2px;
+}
+
+.sidebar button:first-of-type {
+  margin-top: 6px;
+}
+
+.card {
+  animation: softAppear 0.35s ease;
+}
+
+@keyframes softAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+button {
+  user-select: none;
+}
+
+input,
+textarea {
+  font-weight: 500;
+}
+
+input::placeholder,
+textarea::placeholder {
+  opacity: 0.75;
+}
+
+.task {
+  animation: taskSlide 0.25s ease;
+}
+
+@keyframes taskSlide {
+  from {
+    opacity: 0;
+    transform: translateX(-12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+#chatBox:empty::before {
+  content: "Ask your AI study assistant anything...";
+  color: var(--muted);
+  opacity: 0.8;
+}
+
+.card:has(#taskList:empty)::after,
+.card:has(#notesList:empty)::after,
+.card:has(#plannerList:empty)::after {
+  content: "";
+}
+
+.ai-msg {
+  white-space: pre-wrap;
+}
+
+#themeBtn {
+  margin-top: 12px;
+}
+
+#logoutBtn {
+  margin-top: auto;
+}
+
+.app.light .sidebar button {
+  color: #111827;
+}
+
+.app.light .sidebar button:hover {
+  color: white;
+}
+
+.app.light button {
+  color: white;
+}
