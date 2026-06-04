@@ -79,7 +79,8 @@ function renderApp() {
         <button data-page="settings">⚙️ Settings</button>
 
         <button id="themeBtn">${darkMode ? "🌙 Dark" : "☀ Light"}</button>
-        <button id="logoutBtn">Logout</button>
+        <button data-page="about">ℹ️ About</button>
+<button id="logoutBtn">Logout</button>
       </aside>
 
       <main class="main">
@@ -189,7 +190,35 @@ function renderApp() {
             <div class="card"><h3>Daily Streak</h3><p>🔥 ${streak}</p></div>
           </div>
         ` : ""}
+${currentPage === "about" ? `
+  <h2>About North AI</h2>
 
+  <div class="card">
+    <h3>Created by</h3>
+    <p>Koushal</p>
+
+    <p class="muted" style="margin-top: 15px;">
+      North AI is an AI-powered study compass built to help students manage tasks,
+      notes, study plans, focus sessions, and AI assistance in one clean dashboard.
+    </p>
+  </div>
+
+  <div class="card">
+    <h3>Connect</h3>
+
+    <p class="muted">
+      Instagram:
+    </p>
+
+    <a 
+      href="https://instagram.com/koushal_dch"
+      target="_blank"
+      class="about-link"
+    >
+      @koushal_dch
+    </a>
+  </div>
+` : ""}
         ${currentPage === "settings" ? `
           <h2>Settings</h2>
           <p class="muted">Manage your app data and preferences.</p>
