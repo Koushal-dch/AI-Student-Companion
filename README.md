@@ -1,6 +1,6 @@
-# AI Student Companion
+# North
 
-AI Student Companion is a modern AI-powered productivity web app designed for students. It helps users manage tasks, notes, study plans, focus sessions, and AI-powered study assistance in one dashboard.
+North is an AI-powered study compass that helps students manage tasks, notes, study plans, focus sessions, and AI assistance in one modern dashboard.
 
 ## Features
 

@@ -67,7 +67,7 @@ function renderApp() {
   document.querySelector("#app").innerHTML = `
     <div class="app ${darkMode ? "light" : ""}">
       <aside class="sidebar">
-        <h1>AI<span>Companion</span></h1>
+        <h1>North<span>AI</span></h1>
 
         <button data-page="dashboard">📊 Dashboard</button>
         <button data-page="tasks">✅ Tasks</button>

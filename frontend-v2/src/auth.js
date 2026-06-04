@@ -2,7 +2,7 @@ export function renderAuthPage(onLogin) {
   document.querySelector("#app").innerHTML = `
     <div class="auth-page">
       <div class="auth-card">
-        <h1>AI Companion</h1>
+        <h1>North</h1>
         <p>Login or create an account</p>
 
         <input id="username" placeholder="Username" />
