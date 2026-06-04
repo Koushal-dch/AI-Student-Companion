@@ -677,3 +677,85 @@ textarea::placeholder {
 .app.light .about-link {
   color: white;
 }
+/* ===== AMBIENT THEMES ===== */
+
+.theme-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.theme-option {
+  padding: 14px;
+  border-radius: 18px;
+  font-size: 14px;
+}
+
+/* Midnight Purple */
+.app.theme-midnight {
+  background:
+    radial-gradient(circle at 20% 10%, rgba(139,92,246,0.30), transparent 25%),
+    radial-gradient(circle at 80% 0%, rgba(34,211,238,0.18), transparent 25%),
+    #030014;
+}
+
+/* Cyber Blue */
+.app.theme-cyber {
+  background:
+    radial-gradient(circle at top left, rgba(34,211,238,0.32), transparent 28%),
+    radial-gradient(circle at bottom right, rgba(59,130,246,0.26), transparent 32%),
+    #020617;
+}
+
+/* Sunset Pink */
+.app.theme-sunset {
+  background:
+    radial-gradient(circle at top left, rgba(236,72,153,0.35), transparent 30%),
+    radial-gradient(circle at bottom right, rgba(251,146,60,0.28), transparent 32%),
+    #120014;
+}
+
+/* Forest Focus */
+.app.theme-forest {
+  background:
+    radial-gradient(circle at top left, rgba(34,197,94,0.30), transparent 28%),
+    radial-gradient(circle at bottom right, rgba(20,184,166,0.25), transparent 32%),
+    #02130a;
+}
+
+/* Minimal Light */
+.app.theme-minimal {
+  background:
+    radial-gradient(circle at top left, rgba(148,163,184,0.25), transparent 30%),
+    #f8fafc;
+  color: #111827;
+}
+
+.app.theme-minimal .sidebar,
+.app.theme-minimal .card {
+  background: rgba(255,255,255,0.86);
+  color: #111827;
+}
+
+.app.theme-minimal input,
+.app.theme-minimal textarea,
+.app.theme-minimal .task,
+.app.theme-minimal .ai-msg {
+  background: rgba(15,23,42,0.06);
+  color: #111827;
+}
+
+.app.theme-minimal .muted,
+.app.theme-minimal .card h3 {
+  color: #64748b;
+}
+
+.app.theme-minimal .sidebar button {
+  color: #111827;
+}
+
+.app.theme-minimal .sidebar button:hover,
+.app.theme-minimal button:hover {
+  color: white;
+}

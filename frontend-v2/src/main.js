@@ -9,6 +9,9 @@ let currentUser = JSON.parse(localStorage.getItem("currentUser"));
 let currentPage = "dashboard";
 let darkMode = JSON.parse(localStorage.getItem("darkMode")) || false;
 
+let ambientTheme =
+  localStorage.getItem("ambientTheme") || "midnight";
+
 let tasks = currentUser
   ? JSON.parse(localStorage.getItem(`tasks_${currentUser.username}`)) || []
   : [];
@@ -39,6 +42,7 @@ function saveData() {
   }
 
   localStorage.setItem("darkMode", JSON.stringify(darkMode));
+  localStorage.setItem("ambientTheme", ambientTheme);
 }
 
 if (!isLoggedIn || !currentUser) {
@@ -65,7 +69,7 @@ function renderApp() {
     tasks.length === 0 ? 0 : Math.round((completed / tasks.length) * 100);
 
   document.querySelector("#app").innerHTML = `
-    <div class="app ${darkMode ? "light" : ""}">
+    <div class="app ${darkMode ? "light" : ""} theme-${ambientTheme}">
       <aside class="sidebar">
         <h1>North<span>AI</span></h1>
 
@@ -227,7 +231,18 @@ ${currentPage === "about" ? `
             <h3>Account</h3>
             <p class="muted">Logged in as ${currentUser.username}</p>
           </div>
+<div class="card">
+  <h3>Ambient Theme</h3>
+  <p class="muted">Choose your study vibe.</p>
 
+  <div class="theme-grid">
+    <button class="theme-option" data-theme="midnight">🌌 Midnight</button>
+    <button class="theme-option" data-theme="cyber">🧊 Cyber</button>
+    <button class="theme-option" data-theme="sunset">🌅 Sunset</button>
+    <button class="theme-option" data-theme="forest">🌿 Forest</button>
+    <button class="theme-option" data-theme="minimal">⚪ Minimal</button>
+  </div>
+</div>
           <div class="card">
             <h3>Data Controls</h3>
 
@@ -349,7 +364,13 @@ function setupEvents() {
     saveData();
     renderApp();
   });
-
+document.querySelectorAll(".theme-option").forEach(button => {
+  button.addEventListener("click", () => {
+    ambientTheme = button.dataset.theme;
+    saveData();
+    renderApp();
+  });
+});
   if (document.querySelector("#startTimerBtn")) {
     setupTimer();
   }
