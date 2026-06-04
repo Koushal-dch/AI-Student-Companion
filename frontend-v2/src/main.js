@@ -1,7 +1,7 @@
 import "./style.css";
 import { renderAuthPage } from "./auth.js";
 
-const API_URL = "http://localhost:4000/chat";
+const API_URL = "https://ai-student-companion-backend.onrender.com/chat";
 
 let isLoggedIn = localStorage.getItem("loggedIn") === "true";
 let currentUser = JSON.parse(localStorage.getItem("currentUser"));
